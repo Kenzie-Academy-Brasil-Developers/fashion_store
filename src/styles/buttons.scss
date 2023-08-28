@@ -1,0 +1,14 @@
+.button {
+    height: 3.75rem;
+
+    &.black {
+        background-color: var(--color-black);
+        color: var(--color-white);
+    }
+
+    &.white {
+        background-color: var(--color-white);
+        color: var(--color-black);
+        border: 1px solid var(--color-black);
+    }
+}
