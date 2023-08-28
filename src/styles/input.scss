@@ -1,0 +1,11 @@
+.inputDefault {
+    width: 35.5rem;
+    height: 4.875rem;
+    background-color: var(--color-grey);
+    border: none;
+    outline: none;
+
+    &::placeholder {
+        color: rgba(0, 0, 0, 0.50);
+    }
+}
