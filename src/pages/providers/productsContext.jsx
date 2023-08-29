@@ -28,10 +28,6 @@ const ProductsProvider = ({ children }) => {
         setSelectedProduct(selectedItem)
         setFilteredProducts(filtered)
     }
-
-    console.log(selectedProduct);
-    console.log(filteredProducts);
-
     return(
         <ProductsContext.Provider
             value={{
