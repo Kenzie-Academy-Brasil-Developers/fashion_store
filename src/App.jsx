@@ -1,13 +1,10 @@
-import "./styles/index.scss"
+import "./styles/index.scss";
 
-function App() {
-  
+const App = () => {
+    return (
+        <>
+        </>
+    );
+};
 
-  return (
-    <>
-      
-    </>
-  )
-}
-
-export default App
+export default App;
