@@ -6,10 +6,10 @@ export const RegisterPage = () =>{
             <div>
                 <img src={registerImg} alt='register image'/>
                 <div>
-                    <div>
+                    <button>
                         <img src={backArrow} alt='back Arrow'/>
                         <p>Voltar</p>
-                    </div>
+                    </button>
                     <h1>CADASTRAR-SE</h1>
                     <p>Seja bem vindo, administrador!</p>
                     <RegisterForm/>
