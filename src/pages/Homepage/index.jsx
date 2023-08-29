@@ -1,14 +1,29 @@
-import { useState } from "react"
-import ProductsSection from "../../components/sections/ProductsSection"
+import { useState } from "react";
+import ProductsSection from "../../components/sections/ProductsSection";
+import CartModal from "../../components/CartModal";
 
 const Homepage = () => {
-    const [modalVisible, setVisible] = useState(false)
-    const [productsListToCard, setItemCard] = useState([])
-    return(
+    const [modalVisible, setModalVisible] = useState(false);
+    const [productsListToCard, setProductsListToCard] = useState([]);
+    return (
         <>
-            <ProductsSection  setItemCard={setItemCard} productsListToCard={productsListToCard}/>
-        </>
-    )
-}
+            <ProductsSection
+                setProductsListToCard={setProductsListToCard}
+                productsListToCard={productsListToCard}
+            />
+            <button type="button" onClick={() => setModalVisible(true)}>
+                abrirModal
+            </button>
 
-export default Homepage
+            {modalVisible ? (
+                <CartModal
+                    setModalVisible={setModalVisible}
+                    setProductsListToCard={setProductsListToCard}
+                    productsListToCard={productsListToCard}
+                />
+            ) : null}
+        </>
+    );
+};
+
+export default Homepage;

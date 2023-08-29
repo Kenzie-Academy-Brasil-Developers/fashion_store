@@ -1,7 +1,7 @@
 import { useProductsContext } from "../../../../../pages/providers/productsContext";
 import style from "./style.module.scss"
 
-const ProductCard = ({ product, id, setItemCard, productsListToCard }) => {
+const ProductCard = ({ product, id, setProductsListToCard, productsListToCard }) => {
     const { handleSelectedProduct } = useProductsContext()
 
     const price = Number(product.price).toLocaleString("pt-BR", {
@@ -10,7 +10,7 @@ const ProductCard = ({ product, id, setItemCard, productsListToCard }) => {
 
     const addItemToCart = (product) =>{
         const add = product
-        setItemCard([...productsListToCard, add ])
+        setProductsListToCard([...productsListToCard, add ])
     }
 
     return (
