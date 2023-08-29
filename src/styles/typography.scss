@@ -47,6 +47,9 @@
     &.sm {
         font-size: 1.125rem;
     }
+    &.m{
+        font-size: 1.3125rem;
+    }
 
     &.l {
         font-size: 2rem;
@@ -84,6 +87,11 @@
 
     &.sm {
         font-size: 0.875rem;
+        font-weight: 500;
+        letter-spacing: 0.105rem;
+    }
+    &.m{
+        font-size: 1.125rem;
         font-weight: 500;
         letter-spacing: 0.105rem;
     }

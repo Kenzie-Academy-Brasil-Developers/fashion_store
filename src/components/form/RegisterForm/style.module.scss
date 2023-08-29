@@ -1,0 +1,14 @@
+.flexBox{
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+    width: 100%;
+    div{
+        display: flex;
+        justify-content: end;
+        width: 100%;
+        button{
+            width:50%;
+        }
+    }
+}

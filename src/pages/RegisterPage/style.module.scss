@@ -1,0 +1,24 @@
+.containerBox{
+    display: flex;
+    gap:30px;
+    img{
+        width: 50%;
+    }
+}
+.flexBox{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+}
+.buttonBack{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    width:20%;
+    img{
+        width: 16px;
+        height: 16px;
+    }
+}
