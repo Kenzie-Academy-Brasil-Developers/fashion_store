@@ -1,9 +1,9 @@
 import { useParams } from "react-router"
-import { useProductsContext } from "../providers/productsContext"
 import { Link } from "react-router-dom"
 import ProductList from "../../components/sections/ProductsSection/ProductList"
 import { useEffect } from "react"
 import DetailedProductSection from "../../components/sections/DetailedProductSection"
+import { useProductsContext } from "../../providers/productsContext"
 
 const DetailedProduct = () => {
     const { selectedProduct, filteredProducts, handleSelectedProduct, products } = useProductsContext()

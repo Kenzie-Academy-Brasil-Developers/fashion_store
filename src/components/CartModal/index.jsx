@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import CardModal from "./CardModal";
 import style from "./style.module.scss";
 import { MdClose } from "react-icons/md";
-import { useProductsContext } from "../../pages/providers/productsContext";
+import { useProductsContext } from "../../providers/productsContext";
 
 const CartModal = ({ setModalVisible }) => {
     const { productsListToCard, setProductsListToCard } = useProductsContext()

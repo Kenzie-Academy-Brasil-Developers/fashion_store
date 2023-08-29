@@ -1,4 +1,4 @@
-import { useProductsContext } from "../../pages/providers/productsContext"
+import { useProductsContext } from "../../providers/productsContext"
 
 const AddToCartButton = ({ product, btnClass, children }) => {
     const { setProductsListToCard, productsListToCard } = useProductsContext()
