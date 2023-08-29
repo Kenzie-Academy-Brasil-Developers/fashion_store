@@ -4,6 +4,9 @@ import { InputPassword } from "../InputPassword";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { registerFormSchema } from "./registerFormSchema";
 
+import { useContext, useState } from "react";
+import { UserContext } from "../../../providers/userContext";
+
 export const RegisterForm = () => {
   const {
     register,
@@ -23,7 +26,7 @@ export const RegisterForm = () => {
   return (
     <form onSubmit={handleSubmit(submit)}>
       <Input
-        disable={loading}
+        disabled={loading}
         type="text"
         {...register("name")}
         error={errors.name}
@@ -31,20 +34,20 @@ export const RegisterForm = () => {
       />
 
       <Input
-        disable={loading}
+        disabled={loading}
         type="text"
         {...register("email")}
         error={errors.email}
         placeholder="E-MAIL"
       />
       <InputPassword
-        disable={loading}
+        disabled={loading}
         {...register("password")}
         error={errors.password}
         placeholder="SENHA"
       />
       <InputPassword
-        disable={loading}
+        disabled={loading}
         {...register("confirmPassword")}
         error={errors.confirmPassword}
         placeholder="CONFIRMAR SENHA"

@@ -1,5 +1,6 @@
 import registerImg from '../../assets/registerImage.png'
-import backArrow from '../../assets/logoBack.png'
+import backArrow from '../../assets/backArrow.png'
+import { RegisterForm } from '../../components/form/RegisterForm'
 export const RegisterPage = () =>{
     return(
         <main>

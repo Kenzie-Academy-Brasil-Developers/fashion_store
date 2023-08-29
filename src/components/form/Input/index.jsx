@@ -1,4 +1,6 @@
-export const Input = forwardRef({error,type,...rest},ref)=>{
+import { forwardRef } from "react"
+
+export const Input = forwardRef(({error,type,...rest},ref)=>{
     return(
         <div>
             <input ref={ref} {...rest}/>
@@ -6,4 +8,4 @@ export const Input = forwardRef({error,type,...rest},ref)=>{
         
         </div>
     )
-}
+})
