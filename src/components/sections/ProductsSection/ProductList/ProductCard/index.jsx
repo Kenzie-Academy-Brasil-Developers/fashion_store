@@ -1,12 +1,17 @@
 import { useProductsContext } from "../../../../../pages/providers/productsContext";
 import style from "./style.module.scss"
 
-const ProductCard = ({ product, id }) => {
+const ProductCard = ({ product, id, setItemCard, productsListToCard }) => {
     const { handleSelectedProduct } = useProductsContext()
 
     const price = Number(product.price).toLocaleString("pt-BR", {
         minimumFractionDigits: 2,
     });
+
+    const addItemToCart = (product) =>{
+        const add = product
+        setItemCard([...productsListToCard, add ])
+    }
 
     return (
         <>
@@ -17,7 +22,7 @@ const ProductCard = ({ product, id }) => {
                     <span className="price sm">R$ {price}</span>
                 </div>
                 <div className={style.addToCart}>
-                    <button className="addToCartButton" type="button">
+                    <button className="addToCartButton" type="button" onClick={(()=> addItemToCart(product))}>
                         <span className="material-symbols-outlined">
                             add_shopping_cart
                         </span>

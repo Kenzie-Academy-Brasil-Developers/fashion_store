@@ -1,9 +1,20 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import CardModal from "./CardModal";
 import style from "./style.module.scss";
+import { MdClose } from "react-icons/md";
 
-const CartModal = ({ setVisible }) => {
+const CartModal = ({ setVisible, productsListToCard, setItemCard }) => {
     const refModal = useRef(null);
+
+    const value = productsListToCard.reduce(
+        (total, currentProduct) => total + currentProduct.price,
+        0
+    );
+
+    const price = Number(value).toLocaleString("pt-BR", {
+        minimumFractionDigits: 2,
+    });
+
     useEffect(() => {
         const Click = (e) => {
             !refModal.current?.contains(e.target) ? setVisible(false) : null;
@@ -21,17 +32,35 @@ const CartModal = ({ setVisible }) => {
             window.removeEventListener("mousedown", Click);
         };
     }, []);
+    
     return (
         <>
             <div role="dialog" className={style.modalOverlay}>
                 <div className={style.modal} ref={refModal}>
-                    <div className={style.modalHeader}>
-                        <span>CARRINHO</span>
-                        <button onClick={() => setVisible(false)}>X</button>
+                    <div>
+                        <div className={style.modalHeader}>
+                            <span>CARRINHO</span>
+                            <button onClick={() => setVisible(false)}>
+                                <MdClose size={28} color="black" />
+                            </button>
+                        </div>
+                        <ul className={style.list}>
+                            {productsListToCard != "" ? (
+                                productsListToCard.map((product, index) => (
+                                    <CardModal
+                                        key={`${product.id}_${index}`}
+                                        product={product}
+                                        setItemCard={setItemCard}
+                                        productsListToCard={productsListToCard}
+                                        index={index}
+                                    />
+                                ))
+                            ) : (
+                                <span>Sem items no carrinho</span>
+                            )}
+                        </ul>
                     </div>
-                    <div className={style.list}>
-                        <CardModal />
-                    </div>
+                    <span>Total: R$ {price}</span>
                 </div>
             </div>
         </>

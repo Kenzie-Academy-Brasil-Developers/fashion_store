@@ -3,12 +3,33 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    > img {
+        cursor: pointer;
+    }
 }
 
 .card {
     display: flex;
     justify-content: space-between;
     gap: 28.8px;
+
+    >div {
+        position: relative;
+        > img {
+            width: 5rem;
+            height: 5rem;
+        }
+        .nItem {
+            text-align: center;
+            position: absolute;
+            width: 1.2rem;
+            height: 1.2rem;
+            border-radius: 50%;
+            background-color: var(--color-black);
+            color: white;
+        }
+    }
 }
 
 .infoCard {
