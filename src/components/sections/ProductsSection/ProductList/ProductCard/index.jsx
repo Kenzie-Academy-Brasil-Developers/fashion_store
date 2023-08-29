@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useProductsContext } from "../../../../../pages/providers/productsContext";
+import { useProductsContext } from "../../../../../providers/productsContext";
 import style from "./style.module.scss"
 import AddToCartButton from "../../../../AddToCartButton";
 
