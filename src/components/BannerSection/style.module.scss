@@ -1,0 +1,27 @@
+.bannerStyle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    padding: 0 6.25rem;
+
+    div {
+        display: flex;
+        flex-direction: column;
+        width: 30%;
+        gap: 40px;
+    }
+}
+.bannerImg {
+    border-radius: 30px;
+    width: 945px;
+    height: 691px;
+}
+.bannerSpan {
+    width: 220px;
+    text-align: center;
+    padding: 15px 10px;
+    background-color: var(---color-black);
+    color: var(--color-white);
+    font-family: "Roboto", sans-serif;
+}
