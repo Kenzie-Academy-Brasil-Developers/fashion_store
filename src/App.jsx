@@ -1,15 +1,12 @@
-import Homepage from "./pages/Homepage"
-import "./styles/index.scss"
+import "./styles/index.scss";
+import RoutesMain from "./routes/routesMain";
 
+const App = () => {
+    return (
+        <>
+            <RoutesMain />
+        </>
+    );
+};
 
-function App() {
-  
-
-  return (
-    <>
-      <Homepage />
-    </>
-  )
-}
-
-export default App
+export default App;

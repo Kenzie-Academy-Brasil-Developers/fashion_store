@@ -1,14 +1,41 @@
 .button {
     height: 3.75rem;
+    outline: none;
+    border: none;
+    cursor: pointer;
 
     &.black {
         background-color: var(--color-black);
         color: var(--color-white);
+        font-size: 1.125rem;
+        font-weight: 500;
     }
 
     &.white {
         background-color: var(--color-white);
         color: var(--color-black);
         border: 1px solid var(--color-black);
+    }
+}
+
+.addToCartButton {
+    cursor: pointer;
+    padding: 0.75rem;
+    height: 3.75rem;
+    width: 3.75rem;
+    border: none;
+    outline: none;
+    background-color: var(--color-black);
+    color: var(--color-white);
+
+    &.l {
+        display: flex;
+        align-items: center;
+        gap: 1.37rem;
+        width: auto;
+    }
+
+    & span {
+        font-size: 36px;
     }
 }
