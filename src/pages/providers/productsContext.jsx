@@ -4,12 +4,15 @@ import api from "../../services/api.js"
 const ProductsContext = createContext({})
 
 const ProductsProvider = ({ children }) => {
-    
+    const [products, setProducts] = useState({})
+    const [selectedProduct, setSelectedProduct] = useState(null)
+    const [filteredProducts, setFilteredProducts] = useState(null)
+
     useEffect(() => {
         const productsList = async () => {
             try {
                 const { data }  = await api.get("/products")
-                console.log(data);
+                setProducts(data)
             } catch (error) {
                 console.log(error);            
             }
@@ -18,10 +21,22 @@ const ProductsProvider = ({ children }) => {
         productsList()
     }, [])
 
+    const handleSelectedProduct = (id) => {
+        const selectedItem = products.find(item => item.id === Number(id))
+        const filtered = products.filter(item => item.id !== Number(id))
+
+        setSelectedProduct(selectedItem)
+        setFilteredProducts(filtered)
+    }
+
+    console.log(selectedProduct);
+    console.log(filteredProducts);
+
     return(
         <ProductsContext.Provider
             value={{
-
+                products,
+                handleSelectedProduct,
             }}
         >
             {children}
@@ -31,4 +46,4 @@ const ProductsProvider = ({ children }) => {
 
 export default ProductsProvider
 
-export const useProducts = () => useContext(ProductsContext)
+export const useProductsContext = () => useContext(ProductsContext)
