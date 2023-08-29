@@ -1,0 +1,19 @@
+.sc {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card {
+    display: flex;
+    justify-content: space-between;
+    gap: 28.8px;
+}
+
+.infoCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 10px;
+}

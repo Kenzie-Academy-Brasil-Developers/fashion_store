@@ -1,12 +1,12 @@
+import "./styles/index.scss";
 import Homepage from "./pages/Homepage"
-import "./styles/index.scss"
 
-function App() {
-  return (
-    <>
-      <Homepage />
-    </>
-  )
-}
+const App = () => {
+    return (
+        <>
+       <Homepage />
+        </>
+    );
+};
 
-export default App
+export default App;
