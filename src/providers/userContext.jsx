@@ -11,7 +11,7 @@ export const UserProvider = ({ children }) => {
    const navigate = useNavigate();
 
    const userRegister = async (formData, setLoading) => {
-      try {
+        try {
          setLoading(true);
          await api.post("/users", formData);
          navigate("/login");

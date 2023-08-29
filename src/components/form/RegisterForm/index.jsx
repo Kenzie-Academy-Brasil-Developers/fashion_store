@@ -6,6 +6,7 @@ import { registerFormSchema } from "./registerFormSchema";
 
 import { useContext, useState } from "react";
 import { UserContext } from "../../../providers/userContext";
+import styles from './style.module.scss'
 
 export const RegisterForm = () => {
   const {
@@ -24,7 +25,7 @@ export const RegisterForm = () => {
     userRegister(formData, setLoading);
   };
   return (
-    <form onSubmit={handleSubmit(submit)}>
+    <form className={styles.flexBox} onSubmit={handleSubmit(submit)}>
       <Input
         disabled={loading}
         type="text"
@@ -52,11 +53,14 @@ export const RegisterForm = () => {
         error={errors.confirmPassword}
         placeholder="CONFIRMAR SENHA"
       />
-      <button
-        type='submit'
-      >
-        {loading ? "Cadastrando..." : "CADASTRAR-SE"}
-      </button>
+      <div>
+        <button className="button black"
+            type='submit'
+        >
+            {loading ? "Cadastrando..." : "CADASTRAR-SE"}
+        </button>
+
+      </div>
     </form>
   );
 };
