@@ -1,6 +1,6 @@
 import deleteSvg from "../../../assets/deleteItem.svg";
 import style from "./style.module.scss";
-const CardModal = ({ product, setItemCard, productsListToCard, index }) => {
+const CardModal = ({ product, setProductsListToCard, productsListToCard, index }) => {
     const price = Number(product.price).toLocaleString("pt-BR", {
         minimumFractionDigits: 2,
     });
@@ -9,7 +9,7 @@ const CardModal = ({ product, setItemCard, productsListToCard, index }) => {
             (product, index) =>
                 !(product.id === idToRemove && index === indexToRemove)
         );
-        setItemCard(newListProduct);
+        setProductsListToCard(newListProduct);
     };
     return (
         <>

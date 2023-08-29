@@ -3,7 +3,7 @@ import CardModal from "./CardModal";
 import style from "./style.module.scss";
 import { MdClose } from "react-icons/md";
 
-const CartModal = ({ setVisible, productsListToCard, setItemCard }) => {
+const CartModal = ({ setModalVisible, productsListToCard, setProductsListToCard }) => {
     const refModal = useRef(null);
 
     const value = productsListToCard.reduce(
@@ -17,7 +17,7 @@ const CartModal = ({ setVisible, productsListToCard, setItemCard }) => {
 
     useEffect(() => {
         const Click = (e) => {
-            !refModal.current?.contains(e.target) ? setVisible(false) : null;
+            !refModal.current?.contains(e.target) ? setModalVisible(false) : null;
         };
 
         window.addEventListener("mousedown", Click);
@@ -40,7 +40,7 @@ const CartModal = ({ setVisible, productsListToCard, setItemCard }) => {
                     <div>
                         <div className={style.modalHeader}>
                             <span>CARRINHO</span>
-                            <button onClick={() => setVisible(false)}>
+                            <button onClick={() => setModalVisible(false)}>
                                 <MdClose size={28} color="black" />
                             </button>
                         </div>
@@ -50,7 +50,7 @@ const CartModal = ({ setVisible, productsListToCard, setItemCard }) => {
                                     <CardModal
                                         key={`${product.id}_${index}`}
                                         product={product}
-                                        setItemCard={setItemCard}
+                                        setProductsListToCard={setProductsListToCard}
                                         productsListToCard={productsListToCard}
                                         index={index}
                                     />
