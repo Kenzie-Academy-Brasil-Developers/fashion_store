@@ -2,7 +2,7 @@ import { useProductsContext } from "../../../../pages/providers/productsContext"
 import ProductCard from "./ProductCard";
 import style from "./style.module.scss"
 
-const ProductList = () => {
+const ProductList = ({setItemCard, productsListToCard}) => {
     const { products } = useProductsContext();
 
     return (
@@ -14,6 +14,8 @@ const ProductList = () => {
                             id={item.id}
                             key={item.id} 
                             product={item}
+                            setItemCard={setItemCard}
+                            productsListToCard={productsListToCard}
                         />
                     ))}
                 </ul>
