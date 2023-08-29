@@ -1,4 +1,4 @@
-import { useProductsContext } from "../../../../../pages/providers/productsContext";
+import { useProductsContext } from "../../../../../providers/productsContext";
 import style from "./style.module.scss"
 
 const ProductCard = ({ product, id, setProductsListToCard, productsListToCard }) => {
