@@ -28,6 +28,13 @@
     background-color: var(--color-black);
     color: var(--color-white);
 
+    &.l {
+        display: flex;
+        align-items: center;
+        gap: 1.37rem;
+        width: auto;
+    }
+
     & span {
         font-size: 36px;
     }

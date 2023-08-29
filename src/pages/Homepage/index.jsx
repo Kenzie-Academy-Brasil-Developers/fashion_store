@@ -1,26 +1,21 @@
 import { useState } from "react";
 import ProductsSection from "../../components/sections/ProductsSection";
 import CartModal from "../../components/CartModal";
+import { useParams } from "react-router";
 
 const Homepage = () => {
     const [modalVisible, setModalVisible] = useState(false);
-    const [productsListToCard, setProductsListToCard] = useState([]);
+    
     return (
         <>
-            <ProductsSection
-                setProductsListToCard={setProductsListToCard}
-                productsListToCard={productsListToCard}
-            />
+            <ProductsSection />
             <button type="button" onClick={() => setModalVisible(true)}>
                 abrirModal
             </button>
 
             {modalVisible ? (
                 <CartModal
-                    setModalVisible={setModalVisible}
-                    setProductsListToCard={setProductsListToCard}
-                    productsListToCard={productsListToCard}
-                />
+                    setModalVisible={setModalVisible} />
             ) : null}
         </>
     );
