@@ -1,21 +1,21 @@
-import { BannerSection } from "../../components/BannerSection";
-import { useState } from "react";
+import { BannerSection } from "../../components/sections/BannerSection";
 import ProductsSection from "../../components/sections/ProductsSection";
 import CartModal from "../../components/CartModal";
 import { DefaultTemplate } from "../../components/DefaultTemplate";
+import { useProductsContext } from "../../providers/productsContext";
 
 const Homepage = () => {
-  const [modalVisible, setModalVisible] = useState(false);
+    const { modalVisible } = useProductsContext()
 
-  return (
-    <>
-      <DefaultTemplate setModalVisible={setModalVisible} >
-        <BannerSection />
-        <ProductsSection />
-        {modalVisible ? <CartModal setModalVisible={setModalVisible} /> : null}
-      </DefaultTemplate>
-    </>
-  );
+    return (
+        <>
+            <DefaultTemplate>
+                <BannerSection />
+                <ProductsSection />
+                {modalVisible ? <CartModal /> : null}
+            </DefaultTemplate>
+        </>
+    );
 };
 
 export default Homepage;

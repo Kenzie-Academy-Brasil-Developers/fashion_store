@@ -1,16 +1,15 @@
 .imageContainer {
-    width: 36.25rem;
-    height: 41.8125rem;
+    width: clamp(14.375rem, 81vw, 36.25rem);
+    height: clamp(23.875rem, 50vw, 41.8125rem);
 
     img {
         width: 100%;
         height: 100%;
     }
-
 }
 
 .infosContainer {
-    width: 35.5rem;
+    width: clamp(14.5rem, 87vw, 35.5rem);
 
     h3 {
         margin-bottom: 1.37rem;
