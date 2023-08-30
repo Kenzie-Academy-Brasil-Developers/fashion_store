@@ -8,7 +8,8 @@ const ProductsProvider = ({ children }) => {
     const [selectedProduct, setSelectedProduct] = useState({})
     const [filteredProducts, setFilteredProducts] = useState([])
     const [productsListToCard, setProductsListToCard] = useState([]);
-    
+    const [modalVisible, setModalVisible] = useState(false);
+
     const productsList = async () => {
         try {
             const { data }  = await api.get("/products")
@@ -23,6 +24,7 @@ const ProductsProvider = ({ children }) => {
     }, [])
 
     const handleSelectedProduct = (id) => {
+        window.scrollTo(0, 0)
         const selectedItem = products.find(item => item.id === Number(id))
         const filtered = products.filter(item => item.id !== Number(id))
         
@@ -39,6 +41,8 @@ const ProductsProvider = ({ children }) => {
                 filteredProducts,
                 productsListToCard,
                 setProductsListToCard,
+                setModalVisible,
+                modalVisible,
             }}
         >
             {children}

@@ -1,4 +1,3 @@
-import { useProductsContext } from "../../../../providers/productsContext";
 import ProductCard from "./ProductCard";
 import style from "./style.module.scss"
 

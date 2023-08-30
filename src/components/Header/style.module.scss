@@ -1,5 +1,20 @@
 .headerStyle {
-    display: flex;
-    justify-content: space-between;
-    padding: 1.25rem 6.25rem;
+    padding: 1.87rem 0;
+    
+    > div {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    a {
+        color: var(--color-black);
+    }
+
+    button {
+        background-color: transparent;
+        border: none;
+        outline: none;
+        cursor: pointer;
+    }
 }

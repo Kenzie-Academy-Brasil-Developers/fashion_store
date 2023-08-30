@@ -1,12 +1,16 @@
 import { Footer } from "../Footer"
 import { Header } from "../Header"
 
-export const DefaultTemplate = ({ children, setModalVisible }) =>{
+export const DefaultTemplate = ({ children }) =>{
     
     return (
         <>
-            <Header setModalVisible={setModalVisible}/>
-            <main>{children}</main>
+            <Header />
+                <main>
+                    <div className="container">
+                        {children}  
+                    </div>
+                </main>
             <Footer />
         </>
     )

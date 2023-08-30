@@ -1,7 +1,12 @@
 .footerStyle {
-    text-align: center;
-    background-color: var(---color-black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-black);
     color: var(--color-white);
-    padding: 2.1875rem 0;
+    height: 9.75rem;
+    margin-top: 6.25rem;
+    text-align: center;
+    padding: 0 3.45rem;
 }
 
