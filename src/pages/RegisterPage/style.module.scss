@@ -1,8 +1,11 @@
 .containerBox{
     display: flex;
+    flex-direction: column;
     gap:30px;
+    padding: 10px 0;
     img{
-        width: 50%;
+        width:clamp(250px,100%,820px);
+
     }
 }
 .flexBox{
@@ -17,8 +20,17 @@
     background-color: transparent;
     border: none;
     width:20%;
+    gap:10px;
     img{
         width: 16px;
         height: 16px;
+    }
+}
+@media (min-width:750px) {
+    .containerBox{
+        flex-direction: row;
+        img{
+            width: 50%;
+        }
     }
 }

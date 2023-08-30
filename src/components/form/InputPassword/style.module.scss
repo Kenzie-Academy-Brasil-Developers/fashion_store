@@ -1,4 +1,7 @@
 .inputBox{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
     .inputGrid{
         position: relative;
     }
@@ -9,13 +12,18 @@
         border: none;
         padding:0 0 0 20px;
         color: #000000;
+        padding-left: 16px;
+        box-sizing: border-box;
 
         &:disabled{
             opacity: .5;
         }
     }
     p{
-        margin-top: .5rem;
+        color: red;
+        padding: 10px 0;
+    
+    
     }
 
     .buttonEye{
