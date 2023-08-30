@@ -16,7 +16,6 @@ export const UserProvider = ({ children }) => {
             navigate("/login");
             toast.success("Cadastro realizado com sucesso!");
         } catch (error) {
-            console.log(error);
             if (error.response?.data === "Email already exists") {
                 toast.error("Usuário já cadastrado");
             }
@@ -30,7 +29,10 @@ export const UserProvider = ({ children }) => {
             const {data} = await api.post("/login", formData)
             toast.success("Logado com sucesso")
         } catch (error) {
-            toast.warning(error)
+            if (error.response?.data === "Incorrect password" ||error.response?.data ==="Cannot find user") {
+                toast.error("E-mail e/ou senha incorretos");
+            }
+            
         }
     }
     

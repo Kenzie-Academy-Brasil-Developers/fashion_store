@@ -30,7 +30,7 @@ export const RegisterForm = () => {
         disabled={loading}
         type="text"
         {...register("name")}
-        error={errors.name}
+        error ={errors.name}
         placeholder="NOME"
       />
 
