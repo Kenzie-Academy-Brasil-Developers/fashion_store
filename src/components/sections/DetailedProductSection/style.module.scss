@@ -1,0 +1,35 @@
+.detailedProductSection {
+
+    .toHomeContainer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.3125rem;
+        margin-bottom: 3.63rem;
+        flex-wrap: wrap;
+    }
+
+    .cardContainer {
+        display: flex;
+        align-items: center;
+        gap: 3.75rem;
+        max-width: calc(100% - 9.5rem);
+        margin: 0 auto 7.25rem;
+
+        @media(max-width: 768px) {
+            flex-direction: column;
+            max-width: none;
+        }
+
+    }
+
+    h2 {
+        margin-bottom: 3.62rem;
+
+        @media(max-width: 768px) {
+            font-size: 2.75rem !important;
+        }
+
+    }
+
+}

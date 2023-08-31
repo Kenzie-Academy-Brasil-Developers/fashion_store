@@ -1,0 +1,10 @@
+.productsSection {
+    h2 {
+        text-wrap: balance;
+        margin-bottom: 3.62rem;
+
+        @media(max-width: 1181px) {
+            font-size: 2.75rem !important;
+        }
+    }
+}

@@ -1,0 +1,27 @@
+.productCard {
+    min-width: clamp(16.9375rem, 10vw, 20.75rem);
+ 
+    .productInfos {
+        margin-bottom: 2.06rem;
+
+        & img {
+            margin-bottom: 2.81rem;
+            user-select: none;
+            width: 100%;
+        }
+
+        & h3 {
+            margin-bottom: 1.38rem;
+        }
+    }
+
+    .addToCart {
+        display: flex;
+        gap: 1.56rem;
+        align-items: center;
+
+        button {
+            user-select: none;
+        }
+    }
+}

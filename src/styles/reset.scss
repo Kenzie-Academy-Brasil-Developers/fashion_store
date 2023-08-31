@@ -47,11 +47,9 @@ a {
 	text-decoration: none;
 }
 
-
-
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus {
-    -webkit-text-fill-color: var(--color-grey);
+    -webkit-text-fill-color: var(--color-black);
     -webkit-box-shadow: 0px 0px 0px 1000px var(--color-grey) inset;
 }
