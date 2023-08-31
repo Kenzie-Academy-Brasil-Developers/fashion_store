@@ -24,17 +24,22 @@ export const UserProvider = ({ children }) => {
         }
     };
 
-    const userLogin = async (formData) =>{
+    const userLogin = async (formData) => {
         try {
-            const {data} = await api.post("/login", formData)
-            toast.success("Logado com sucesso")
+          const { data } = await api.post("/login", formData);
+          localStorage.setItem("@TOKEN", data.accessToken);
+          setUser(data.user);
+          toast.success("Logado com sucesso");
+          navigate("/admin");
         } catch (error) {
-            if (error.response?.data === "Incorrect password" ||error.response?.data ==="Cannot find user") {
-                toast.error("E-mail e/ou senha incorretos");
-            }
-            
+          if (
+            error.response?.data === "Incorrect password" ||
+            error.response?.data === "Cannot find user"
+          ) {
+            toast.error("E-mail e/ou senha incorretos");
+          }
         }
-    }
+      };
     
     return (
         <UserContext.Provider value={{ user, userRegister, userLogin }}>

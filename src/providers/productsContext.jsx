@@ -44,14 +44,7 @@ const ProductsProvider = ({ children }) => {
       console.log(error);
     }
   };
-  addProduct({
-    name: "teste",
-    price: 500,
-    description: "Loren ipsum",
-    image:
-      "https://res.cloudinary.com/dsbkp5841/image/upload/v1687807062/Rectangle_4_hwrkgf.jpg",
-  });
-  console.log(products);
+  
   const deleteProduct = async (deletingId) => {
     try {
       const token = localStorage.getItem("@TOKEN");
