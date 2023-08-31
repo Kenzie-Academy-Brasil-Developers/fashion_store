@@ -28,6 +28,7 @@ export const UserProvider = ({ children }) => {
         try {
             const {data} = await api.post("/login", formData)
             toast.success("Logado com sucesso")
+            console.log(data)
         } catch (error) {
             if (error.response?.data === "Incorrect password" ||error.response?.data ==="Cannot find user") {
                 toast.error("E-mail e/ou senha incorretos");
