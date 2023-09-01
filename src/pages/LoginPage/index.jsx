@@ -1,6 +1,5 @@
-import DefaultPageAdmin from "../../components/DeafaultPageAdmin";
+import DefaultPageAdmin from "../../components/DefaultPageAdmin";
 import banner from "../../assets/banner.png";
-
 import style from "./style.module.scss";
 import { Input } from "../../components/form/Input";
 import { InputPassword } from "../../components/form/InputPassword";
@@ -8,7 +7,7 @@ import { useContext } from "react";
 import { UserContext } from "../../providers/userContext";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-
+import { ToastContainer } from "react-toastify"
 
 const LoginPage = () => {
     const navigate = useNavigate()
@@ -30,13 +29,14 @@ const LoginPage = () => {
                         <span className="title l">ENTRAR</span>
                         <div>
                             <form onSubmit={handleSubmit(submit)}>
-                                <Input type="email" placeholder="E-MAIL" {...register('email')} />
+                                <Input  type="email" placeholder="E-MAIL" {...register('email')} />
                                 <InputPassword placeholder="SENHA" {...register('password')} />
                                 <div className={style.btns}>
                                     <button type="submit" className="button black">ACESSAR</button>
                                     <button type="button" className="button white" onClick={()=> navigate("/register")}>CADASTRAR-SE</button>
                                 </div>
                             </form>
+                            <ToastContainer />
                         </div>
                     </section>
                 </section>
