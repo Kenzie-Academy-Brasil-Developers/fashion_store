@@ -8,6 +8,7 @@ const ProductsSection = () => {
     return(
         <section className={style.productsSection}>
             <h2 id="teste" className="title l">PRODUTOS EM DESTAQUE</h2>
+            <Filter/>
             <ProductList products={products} />
         </section>
     )
