@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import DefaultPageAdmin from "../../components/DeafaultPageAdmin";
 import styles from "./style.module.scss";
+import DefaultPageAdmin from "../../components/DefaultPageAdmin";
 
 const AdminPage = () => {
   const navigate = useNavigate();
