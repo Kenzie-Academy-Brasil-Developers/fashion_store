@@ -1,10 +1,26 @@
 .productsSection {
-    h2 {
-        text-wrap: balance;
+    >div{
+        display: flex;
+        flex-direction: column;
         margin-bottom: 3.62rem;
+        gap:10px;
+        
+    }
+    h2 {
+        // text-wrap: balance;
+        
 
         @media(max-width: 1181px) {
             font-size: 2.75rem !important;
+        }
+    }
+}
+@media (min-width:750px){
+    .productsSection{
+        >div{
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
         }
     }
 }

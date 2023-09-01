@@ -1,17 +1,31 @@
+import { useState } from "react";
 import { useProductsContext } from "../../../providers/productsContext";
-import ProductList from "./ProductList"
-import style from "./style.module.scss"
+import { SearchForm } from "../../Filter/SearchForm";
+import ProductList from "./ProductList";
+import style from "./style.module.scss";
 
 const ProductsSection = () => {
-    const { products } = useProductsContext();
+  const { products } = useProductsContext();
+  const [search, setSearch] = useState("");
 
-    return(
-        <section className={style.productsSection}>
-            <h2 id="teste" className="title l">PRODUTOS EM DESTAQUE</h2>
-            <Filter/>
-            <ProductList products={products} />
-        </section>
-    )
-}
+  const productsResult = products.filter((product) => {
+    product.name.toLowerCase().includes(search.toLocaleLowerCase());
 
-export default ProductsSection
+  });
+
+  const productsResultFinal = search? productsResult : products;
+
+  return (
+    <section className={style.productsSection}>
+      <div>
+        <h2 id="teste" className="title l">
+          PRODUTOS EM DESTAQUE
+        </h2>
+        <SearchForm setSearch={setSearch} products={products} />
+      </div>
+      <ProductList products={products} productsResultFinal={productsResultFinal} />
+    </section>
+  );
+};
+
+export default ProductsSection;
