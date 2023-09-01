@@ -1,38 +1,25 @@
-.inputBox{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    .inputGrid{
-        position: relative;
-    }
-    input{
-        background-color:var(--color-grey) ;
-        width: 100%;
-        height: 4.875rem;
-        border: none;
-        padding:0 0 0 20px;
-        color: #000000;
-        padding-left: 16px;
-        box-sizing: border-box;
+.inputBox {
+    position: relative;
 
-        &:disabled{
+    input {
+
+        &:disabled {
             opacity: .5;
         }
     }
-    p{
+
+    p {
         color: red;
-        padding: 10px 0;
-    
-    
     }
 
-    .buttonEye{
+    .buttonEye {
         position: absolute;
-        top: 1.55rem; 
+        top: 1.55rem;
         right: 15px;
         font-size: 1.5rem;
         border: none;
-        width:max-content;
+        width: max-content;
+        cursor: pointer;
+        user-select: none;
     }
-
 }
