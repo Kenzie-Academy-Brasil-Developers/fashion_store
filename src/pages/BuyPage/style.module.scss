@@ -1,0 +1,43 @@
+.buySection {
+    display: grid;
+    grid-template-columns: 60% 40%;
+    gap: 6rem;
+
+    .price {
+        height: 3rem;
+        border-top: 1px solid black;
+        padding: 1.5rem;
+    }
+
+    .finishBuy {
+        border: 1px solid black;
+        height: 20rem;
+
+        h2 {
+            text-align: center;
+            padding: 0.5rem;
+        }
+    }
+
+}
+
+.shoppingCart {
+    .list {
+        display: flex;
+        flex-direction: column;
+        gap: 2.94rem;
+        max-height: 500px;
+        overflow: auto;
+    
+        .sc {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        
+            > img {
+                cursor: pointer;
+            }
+        }
+    }
+}

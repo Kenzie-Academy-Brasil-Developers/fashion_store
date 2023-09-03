@@ -4,7 +4,8 @@ import DetailedProduct from "../pages/DetailedProduct";
 import { RegisterPage } from "../pages/RegisterPage";
 import LoginPage from "../pages/LoginPage";
 import AdminPage from "../pages/AdminPage";
-import { ProtectedRoute } from "../components/ProtectedRoute";
+import { AdminProtectedRoute, BuyProductsProtectedRoute } from "../components/ProtectedRoute";
+import BuyPage from "../pages/BuyPage";
 
 const RoutesMain = () => {
   return (
@@ -13,11 +14,12 @@ const RoutesMain = () => {
       <Route path="/login" element={<LoginPage />} />
       <Route path="/:productName/:productId" element={<DetailedProduct />} />
       <Route path="/register" element={<RegisterPage />} />
-
-      <Route path="/admin" element={<ProtectedRoute />}>
+      <Route path="/admin" element={<AdminProtectedRoute />}>
         <Route index element={<AdminPage />} />
       </Route>
-
+      <Route path="/buy" element={<BuyProductsProtectedRoute />}>
+          <Route index element={<BuyPage />} />
+      </Route>
     </Routes>
   );
 };

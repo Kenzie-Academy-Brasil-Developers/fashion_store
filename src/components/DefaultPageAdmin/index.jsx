@@ -9,7 +9,7 @@ const DefaultPageAdmin = ({ children }) => {
                     <span className="title m">FASHIONSTORE</span>
                 </div>
             </header>
-            <main>
+            <main className={style.main}>
                 <div className={`container`}>
                     {children}
                 </div>
