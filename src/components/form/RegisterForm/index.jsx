@@ -53,7 +53,7 @@ export const RegisterForm = () => {
         error={errors.confirmPassword}
         placeholder="CONFIRMAR SENHA"
       />
-      <div>
+      <div className={styles.registerButton}>
         <button className="button black"
             type='submit'
         >

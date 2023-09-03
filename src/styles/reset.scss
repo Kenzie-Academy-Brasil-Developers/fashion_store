@@ -45,6 +45,12 @@ table {
 
 a {
 	text-decoration: none;
+	color: var(--color-black);
+	cursor: pointer;
+}
+
+input {
+	box-sizing: border-box;
 }
 
 input:-webkit-autofill,

@@ -22,7 +22,9 @@ const ProductCard = ({ product, id }) => {
                 </div>
                 <div className={style.addToCart}>
                     <AddToCartButton product={product} btnClass={"addToCartButton"} />
-                    <p className="paragraph sm">SAIBA MAIS</p>
+                    <Link to={`/${product.name}/${id}`}>
+                        <p className="paragraph sm" onClick={() => handleSelectedProduct(id)} >SAIBA MAIS</p>
+                    </Link>
                 </div>
             </li>
         </>
