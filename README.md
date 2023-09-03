@@ -13,5 +13,5 @@ A aplicação é construída utiliando React, utilizando Axios para a manutenç�
 - https://www.linkedin.com/in/miguel-luz-0822ba26b/
 - https://github.com/Karengrabarz
 - https://www.linkedin.com/in/klausGkuhlmann/
-
+- [Arthur Claro](https://www.linkedin.com/in/arthur-claro-8113b41a6/)
 
