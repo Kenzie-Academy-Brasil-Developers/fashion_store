@@ -10,10 +10,10 @@ export const SearchForm = ({setSearch}) => {
         setSearch(value);
         setValue("");
     }
-
+    
     return(
         <form className={styles.form} onSubmit={submit}>
-            <input  placeholder="O que você procura?" type="text" value={value} onChange={(e) => setValue(e.target.value)} required />
+            <input className="paragraph" placeholder="O que você procura?" type="text" value={value} onChange={(e) => setValue(e.target.value)}  />
             <button type="submit">
                 <MdSearch size={21} />
             </button>
