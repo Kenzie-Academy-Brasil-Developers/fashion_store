@@ -1,25 +1,29 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import CardModal from "./CardModal";
 import style from "./style.module.scss";
-import { MdClose } from "react-icons/md";
 import { useProductsContext } from "../../providers/productsContext";
+import { AnimatePresence, motion } from "framer-motion";
 
 const CartModal = () => {
-    const { productsListToCard, setProductsListToCard, setModalVisible } = useProductsContext()
+    const { productsListToCard, setModalVisible, modalVisible } =
+        useProductsContext();
     const refModal = useRef(null);
 
+
     const value = productsListToCard.reduce(
-        (total, currentProduct) => total + currentProduct.price,
+        (total, currentProduct) => total + (currentProduct.price * currentProduct.amount),
         0
     );
-
+    
     const price = Number(value).toLocaleString("pt-BR", {
         minimumFractionDigits: 2,
     });
 
     useEffect(() => {
         const Click = (e) => {
-            !refModal.current?.contains(e.target) ? setModalVisible(false) : null;
+            !refModal.current?.contains(e.target)
+                ? setModalVisible(false)
+                : null;
         };
 
         window.addEventListener("mousedown", Click);
@@ -34,36 +38,61 @@ const CartModal = () => {
             window.removeEventListener("mousedown", Click);
         };
     }, []);
-    
+
+    console.log(refModal);
+
     return (
         <>
             <div role="dialog" className={style.modalOverlay}>
-                <div className={style.modal} ref={refModal}>
-                    <div>
-                        <div className={style.modalHeader}>
-                            <span>CARRINHO</span>
-                            <button onClick={() => setModalVisible(false)}>
-                                <MdClose size={28} color="black" />
-                            </button>
-                        </div>
-                        <ul className={style.list}>
-                            {productsListToCard != "" ? (
-                                productsListToCard.map((product, index) => (
-                                    <CardModal
-                                        key={`${product.id}_${index}`}
-                                        product={product}
-                                        setProductsListToCard={setProductsListToCard}
-                                        productsListToCard={productsListToCard}
-                                        index={index}
-                                    />
-                                ))
+                <AnimatePresence>
+                    { modalVisible && <motion.div
+                        initial={{
+                            transform: "translate3d(101%, 0, 0)"
+                        }}
+                        animate={{ 
+                            transform: "translate3d(0%, 0, 0)"
+                        }}
+                        exit={{
+                            transform: "translate3d(101%, 0, 0)"
+                        }}
+                        transition={{
+                            duration: 0.4,
+                            type: "spring"
+                        }}
+                        className={style.modal}
+                        ref={refModal}
+                    >
+                        <div>
+                            <div className={style.modalHeader}>
+                                <span className="title m">CARRINHO</span>
+                                <button onClick={() => setModalVisible(false)}>
+                                    <span className="material-symbols-outlined">
+                                        close
+                                    </span>
+                                </button>
+                            </div>
+                            {productsListToCard.length > 0 ? (
+                                <ul className={style.list}>
+                                    {productsListToCard.map(
+                                        (product, index) => (
+                                            <CardModal
+                                                key={`${product.id}_${index}`}
+                                                product={product}
+                                                index={index}
+                                            />
+                                        )
+                                    )}
+                                </ul>
                             ) : (
                                 <span>Sem items no carrinho</span>
                             )}
-                        </ul>
-                    </div>
-                    <span>Total: R$ {price}</span>
-                </div>
+                        </div>
+                        <p className="price sm">
+                            TOTAL: <span className="price sm bold">R$ {price}</span>
+                        </p>
+                    </motion.div> 
+                    }
+                </AnimatePresence>
             </div>
         </>
     );

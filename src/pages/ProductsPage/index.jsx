@@ -8,10 +8,10 @@ import AdminProducts from "../../components/AdminProducts/index.jsx";
 import DefaultPageAdmin from "../../components/DefaultPageAdmin";
 // >>>>>>> 78818fb2a10300c8f15831903538623a5ff8441a
 
-const AdminPage = () => {
+const ProductsPage = () => {
   const navigate = useNavigate();
 
-
+  
   const { products } = useProductsContext()
   // console.log(products)
 
@@ -22,21 +22,19 @@ const AdminPage = () => {
           <h2 className="menu" onClick={() => navigate("/admin")} >
             INÍCIO
           </h2>
-          <h2 className="menu" onClick={() => navigate("/products")}>
+          <h2 className="menu" onClick={() => navigate("")}>
             PRODUTOS
           </h2>
         </nav>
-        <div>
-          <h1 className="title l">PAINEL DO ADMINISTRADOR</h1>
-          <p className="paragraph">Seja bem vindo, administrador!</p>
-        </div>
-
+       
+             <AdminProducts/>
+          
 
       </section>
 
-
+      
     </DefaultPageAdmin>
   );
 };
 
-export default AdminPage;
+export default ProductsPage;

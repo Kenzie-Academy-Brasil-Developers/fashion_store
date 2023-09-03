@@ -5,6 +5,7 @@ import { RegisterPage } from "../pages/RegisterPage";
 import LoginPage from "../pages/LoginPage";
 import AdminPage from "../pages/AdminPage";
 import { ProtectedRoute } from "../components/ProtectedRoute";
+import ProductsPage from "../pages/ProductsPage";
 
 const RoutesMain = () => {
   return (
@@ -16,6 +17,10 @@ const RoutesMain = () => {
 
       <Route path="/admin" element={<ProtectedRoute />}>
         <Route index element={<AdminPage />} />
+      </Route>
+
+      <Route path="/products" element={<ProtectedRoute />}>
+        <Route index element={<ProductsPage />} />
       </Route>
 
       

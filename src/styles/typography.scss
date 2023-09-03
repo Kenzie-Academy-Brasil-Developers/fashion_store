@@ -53,6 +53,10 @@
 
     &.sm {
         font-size: 1.125rem;
+
+        &.bold {
+            font-weight: 700;
+        }
     }
     &.m{
         font-size: 1.3125rem;
