@@ -1,0 +1,56 @@
+.div {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+
+    &>button {
+        font-size: 16px;
+        background: var(--Black, #000);
+        color: white;
+        width: 211px;
+        position: relative;
+        left: 964px;
+        top: -81px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 9px 20px;
+        cursor: pointer;
+
+        left: 910px;
+
+        @media (max-width:1440px) {
+            left: 878px;
+        }
+
+        @media (max-width:1024px) {
+            left: 749px;
+        }
+
+        @media (max-width:768px) {
+            left: 507px;
+        }
+
+        @media (max-width:426px) {
+            position: inherit;
+            scale: 0.9;
+        }
+        @media (max-width:320px) {
+            position: inherit;
+            scale: 0.8;
+        }
+    }
+}
+
+.ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 34px 20px;
+    max-width: 100%;
+    @media (max-width:320px) {
+       gap: 0;
+       z-index: -1;
+
+    }
+}

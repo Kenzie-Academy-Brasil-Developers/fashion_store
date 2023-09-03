@@ -1,0 +1,102 @@
+.modalOverplay {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .3);
+}
+
+.moadlBox {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 558px;
+    max-height: 462px;
+    height: 100%;
+    border-radius: 4px;
+    background-color: white;
+    box-shadow: 0px 4px 40px -10px rgba(0, 0, 0, 0.25);
+    gap: 15px;
+    padding: 20px;
+
+    @media (max-width:320px) {
+        scale: 0.8;
+    }
+}
+
+.div1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    &>h4 {
+        font-family: Oswald;
+        font-size: 38px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-transform: uppercase;
+    }
+
+    &>button {
+        cursor: pointer;
+        border: none;
+        font-size: 24px;
+        font-weight: 500;
+        background-color: white;
+        padding-right: 9px;
+        padding-bottom: 24px;
+    }
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+    padding-top: 5px;
+
+    &>input {
+        width: 100%;
+        height: 40px;
+        background: #EEE;
+        color: rgba(0, 0, 0, 0.50);
+        border: none;
+    }
+
+    &>input::placeholder {
+        padding-left: 10px;
+        color: var(--Black, #000);
+    }
+
+    &>textarea {
+        border: none;
+        width: 100%;
+        background: #EEE;
+        color: rgba(0, 0, 0, 0.50);
+        height: 114px;
+    }
+    &>textarea::placeholder {
+        padding-left: 10px;
+        color: var(--Black, #000);
+    }
+
+    &>button{
+        width: 219px;
+        height: 48px;
+        background: var(--Black, #000);
+        color: white;
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        position: relative;
+        right: -302px;
+        @media (max-width:320px) {
+            right: -65px;
+        }
+    }
+}

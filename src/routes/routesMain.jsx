@@ -18,6 +18,8 @@ const RoutesMain = () => {
         <Route index element={<AdminPage />} />
       </Route>
 
+      
+
     </Routes>
   );
 };
