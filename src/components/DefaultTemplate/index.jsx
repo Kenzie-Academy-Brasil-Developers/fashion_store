@@ -6,7 +6,7 @@ export const DefaultTemplate = ({ children }) =>{
     return (
         <>
             <Header />
-                <main>
+                <main style={{marginTop: "7rem"}}>
                     <div className="container">
                         {children}  
                     </div>
