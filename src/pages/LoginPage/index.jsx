@@ -7,7 +7,6 @@ import { useContext } from "react";
 import { UserContext } from "../../providers/userContext";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
 
 const LoginPage = () => {
     const navigate = useNavigate();
@@ -54,7 +53,6 @@ const LoginPage = () => {
                                     </button>
                                 </div>
                             </form>
-                            <ToastContainer />
                         </div>
                     </section>
                 </section>
