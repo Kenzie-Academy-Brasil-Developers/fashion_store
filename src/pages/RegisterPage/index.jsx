@@ -21,7 +21,9 @@ export const RegisterPage = () => {
                         <p className="paragraph m">VOLTAR</p>
                     </button>
                     <h1 className="title xl mobile">CADASTRAR-SE</h1>
-                    <p className={`${styles.welcome} paragraph`}>Seja bem vindo, administrador!</p>
+                    <p className={`${styles.welcome} paragraph`}>
+                        Seja bem vindo, administrador!
+                    </p>
                     <RegisterForm />
                 </div>
             </div>

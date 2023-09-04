@@ -1,23 +1,20 @@
 import ProductCard from "./ProductCard";
 import style from "./style.module.scss"
 
-const ProductList = ({ productsResultFinal}) => {
-
+const ProductList = ({ productsResultFinal }) => {
     return (
         <>
             {productsResultFinal.length > 0 ? (
                 <ul className={style.productList}>
-                    {productsResultFinal.map((item) => (
-                        <ProductCard 
+                    {products.map((item) => (
+                        <ProductCard
                             id={item.id}
-                            key={item.id} 
+                            key={item.id}
                             product={item}
                         />
                     ))}
                 </ul>
-            ) : (
-                <p>Nenhum resultado encontrado</p>
-            )}
+            ) : null}
         </>
     );
 };

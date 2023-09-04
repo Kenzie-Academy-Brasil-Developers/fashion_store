@@ -10,7 +10,7 @@ const AddToCartButton = ({ product, btnClass, children }) => {
             findItem.amount += 1;
             setProductsListToCard([...productsListToCard]);
         } else {
-            product.amount = 1
+            product.amount = 1;
             setProductsListToCard([...productsListToCard, product]);
         }
     };
