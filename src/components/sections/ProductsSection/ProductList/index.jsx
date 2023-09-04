@@ -1,7 +1,7 @@
 import ProductCard from "./ProductCard";
 import style from "./style.module.scss"
 
-const ProductList = ({ search, productsResultFinal}) => {
+const ProductList = ({ productsResultFinal}) => {
 
     return (
         <>
