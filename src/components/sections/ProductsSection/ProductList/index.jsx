@@ -1,10 +1,10 @@
 import ProductCard from "./ProductCard";
 import style from "./style.module.scss"
 
-const ProductList = ({ productsResultFinal }) => {
+const ProductList = ({ products }) => {
     return (
         <>
-            {productsResultFinal.length > 0 ? (
+            {products.length > 0 ? (
                 <ul className={style.productList}>
                     {products.map((item) => (
                         <ProductCard
