@@ -9,7 +9,7 @@ const ProductCard = ({ product, id }) => {
     const price = Number(product.price).toLocaleString("pt-BR", {
         minimumFractionDigits: 2,
     });
-
+   
     return (
         <>
             <li className={style.productCard}>
