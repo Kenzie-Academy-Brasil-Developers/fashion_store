@@ -10,6 +10,36 @@ export const UserProvider = ({ children }) => {
 
     const navigate = useNavigate();
 
+    const [loading, setLoading] = useState(false);
+
+    const pathname = window.location.pathname;
+  
+    useEffect(() => {
+      const loadUser = async () => {
+        const token = localStorage.getItem("@TOKEN");
+        const userId = localStorage.getItem("@USERID");
+  
+        if (token && userId) {
+          try {
+            setLoading(true);
+            const { data } = await api.get(`/users/${userId}`, {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            });
+            setUser(data);
+            navigate(pathname);
+          } catch (error) {
+            localStorage.removeItem("@TOKEN");
+            localStorage.removeItem("@USERID");
+          } finally {
+            setLoading(false);
+          }
+        }
+      };
+      loadUser();
+    }, []);
+
     const userRegister = async (formData, setLoading) => {
         try {
             setLoading(true);
@@ -29,6 +59,7 @@ export const UserProvider = ({ children }) => {
         try {
           const { data } = await api.post("/login", formData);
           localStorage.setItem("@TOKEN", data.accessToken);
+          localStorage.setItem('@USERID', data.user.id)
           setUser(data.user);
           ToastSuccess("Logado com sucesso")
           navigate("/admin");

@@ -4,7 +4,7 @@ import DetailedProduct from "../pages/DetailedProduct";
 import { RegisterPage } from "../pages/RegisterPage";
 import LoginPage from "../pages/LoginPage";
 import AdminPage from "../pages/AdminPage";
-import { ProtectedRoute } from "../components/ProtectedRoute";
+import { ProtectedRoute } from "./ProtectedRoute";
 
 const RoutesMain = () => {
   return (
@@ -14,8 +14,8 @@ const RoutesMain = () => {
       <Route path="/:productName/:productId" element={<DetailedProduct />} />
       <Route path="/register" element={<RegisterPage />} />
 
-      <Route path="/admin" element={<ProtectedRoute />}>
-        <Route index element={<AdminPage />} />
+      <Route element={<ProtectedRoute />}>
+        <Route path="/admin"  element={<AdminPage />} />
       </Route>
 
     </Routes>
