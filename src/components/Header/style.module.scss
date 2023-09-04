@@ -1,5 +1,9 @@
 .headerStyle {
     padding: 1.87rem 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: var(--color-white);
     
     > div {
         display: flex;
