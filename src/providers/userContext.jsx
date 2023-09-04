@@ -72,9 +72,15 @@ export const UserProvider = ({ children }) => {
           }
         }
       };
+      const userLogout = () => {
+        setUser(null);
+        navigate("/");
+        localStorage.removeItem("@TOKEN");
+        localStorage.removeItem("@USERID");
+     };
     
     return (
-        <UserContext.Provider value={{ user, userRegister, userLogin }}>
+        <UserContext.Provider value={{userLogout, user, userRegister, userLogin,loading }}>
             {children}
         </UserContext.Provider>
     );
