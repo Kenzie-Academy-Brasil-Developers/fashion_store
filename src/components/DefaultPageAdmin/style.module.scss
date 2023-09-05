@@ -1,3 +1,7 @@
+.container{
+    min-height: 100vh;
+  
+}
 .header {
     width: 100%;
     padding-top: 2.19rem;
@@ -5,4 +9,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    
+    button{
+        border:none;
+        background-color: transparent;
+        cursor: pointer;
+    }
 }

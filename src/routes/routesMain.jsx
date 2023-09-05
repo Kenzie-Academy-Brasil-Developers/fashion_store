@@ -4,24 +4,26 @@ import DetailedProduct from "../pages/DetailedProduct";
 import { RegisterPage } from "../pages/RegisterPage";
 import LoginPage from "../pages/LoginPage";
 import AdminPage from "../pages/AdminPage";
-import { ProtectedRoute } from "../components/ProtectedRoute";
+import { ProtectedRoute } from "./ProtectedRoute";
+import { PublicRoute } from "./PublicRoute";
 
 const RoutesMain = () => {
-    return (
-        <Routes>
-            <Route path="/" element={<Homepage />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route
-                path="/:productName/:productId"
-                element={<DetailedProduct />}
-            />
-            <Route path="/register" element={<RegisterPage />} />
+  return (
+    <Routes>
+      <Route element={<PublicRoute/>}>
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+      </Route>
 
-            <Route path="/admin" element={<ProtectedRoute />}>
-                <Route index element={<AdminPage />} />
-            </Route>
-        </Routes>
-    );
+      <Route path="/" element={<Homepage />} />
+      <Route path="/:productName/:productId" element={<DetailedProduct />} />
+
+      <Route element={<ProtectedRoute />}>
+        <Route path="/admin"  element={<AdminPage />} />
+      </Route>
+
+    </Routes>
+  );
 };
 
 export default RoutesMain;
