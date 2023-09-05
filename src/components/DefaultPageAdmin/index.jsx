@@ -13,7 +13,7 @@ const DefaultPageAdmin = ({ children }) => {
                 <div className={`container`}>
                     <span className="title m">FASHIONSTORE</span>
                     <button className="btn outline" onClick={() => userLogout()}>
-                     <BiLogOut/>
+                     <BiLogOut size={21}/>
                   </button>
                 </div>
             </header>
