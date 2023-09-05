@@ -25,7 +25,7 @@ const DetailedProduct = () => {
     return (
         <DefaultTemplate>
             <DetailedProductSection selectedProduct={selectedProduct}>
-                <ProductList products={filteredProducts} />
+                <ProductList  productsResultFinal={filteredProducts} />
             </DetailedProductSection>
             {modalVisible ? <CartModal /> : null}
         </DefaultTemplate>

@@ -10,7 +10,7 @@ const DefaultPageAdmin = ({ children }) => {
     return (
         <>
             <header className={style.header}>
-                <div className={`container`}>   
+                <div className={`container`}>
                     <span className="title m">FASHIONSTORE</span>
                     <button className="btn outline" onClick={() => userLogout()}>
                      <BiLogOut/>
@@ -18,13 +18,11 @@ const DefaultPageAdmin = ({ children }) => {
                 </div>
             </header>
             <main>
-                <div className={`container`}>
-                    {children}
-                </div>
+                <div className={`container`}>{children}</div>
             </main>
             <Footer />
         </>
     );
 };
 
-export default DefaultPageAdmin
+export default DefaultPageAdmin;

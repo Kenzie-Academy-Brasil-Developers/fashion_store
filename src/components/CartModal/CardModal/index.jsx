@@ -2,16 +2,16 @@ import deleteSvg from "../../../assets/deleteItem.svg";
 import { useProductsContext } from "../../../providers/productsContext";
 import style from "./style.module.scss";
 const CardModal = ({ product, index }) => {
-    const { productsListToCard, setProductsListToCard } = useProductsContext()
+    const { productsListToCard, setProductsListToCard } = useProductsContext();
 
     const price = Number(product.price).toLocaleString("pt-BR", {
         minimumFractionDigits: 2,
     });
-    
+
     const removeItem = (idToRemove, indexToRemove) => {
-        if(product.amount > 1) {
-            product.amount -= 1
-            setProductsListToCard([...productsListToCard])
+        if (product.amount > 1) {
+            product.amount -= 1;
+            setProductsListToCard([...productsListToCard]);
         } else {
             const newListProduct = productsListToCard.filter(
                 (product, index) =>

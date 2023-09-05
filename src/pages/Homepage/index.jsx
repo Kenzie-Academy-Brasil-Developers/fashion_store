@@ -5,7 +5,7 @@ import { DefaultTemplate } from "../../components/DefaultTemplate";
 import { useProductsContext } from "../../providers/productsContext";
 
 const Homepage = () => {
-    const { modalVisible } = useProductsContext()
+    const { modalVisible } = useProductsContext();
 
     return (
         <>

@@ -6,7 +6,7 @@ import { ToastError, ToastSuccess } from "../components/Toasts";
 export const UserContext = createContext({});
 
 export const UserProvider = ({ children }) => {
-    const [user, setUser] = useState(null)
+    const [user, setUser] = useState(null);
 
     const navigate = useNavigate();
 
@@ -45,7 +45,7 @@ export const UserProvider = ({ children }) => {
             setLoading(true);
             await api.post("/users", formData);
             navigate("/login");
-            ToastSuccess("Cadastro realizado com sucesso!")
+            ToastSuccess("Cadastro realizado com sucesso!");
         } catch (error) {
             if (error.response?.data === "Email already exists") {
                 ToastError("Usuário já cadastrado");
@@ -64,12 +64,12 @@ export const UserProvider = ({ children }) => {
           ToastSuccess("Logado com sucesso")
           navigate("/admin");
         } catch (error) {
-          if (
-            error.response?.data === "Incorrect password" ||
-            error.response?.data === "Cannot find user"
-          ) {
-            ToastError("E-mail e/ou senha incorretos");
-          }
+            if (
+                error.response?.data === "Incorrect password" ||
+                error.response?.data === "Cannot find user"
+            ) {
+                ToastError("E-mail e/ou senha incorretos");
+            }
         }
       };
       const userLogout = () => {
