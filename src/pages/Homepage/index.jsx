@@ -1,10 +1,9 @@
 import { BannerSection } from "../../components/sections/BannerSection";
 import ProductsSection from "../../components/sections/ProductsSection";
 import CartModal from "../../components/CartModal";
-import { DefaultTemplate } from "../../components/DefaultTemplate";
 import { useProductsContext } from "../../providers/productsContext";
-import { Link } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
+import DefaultTemplate from "../../components/DefaultTemplate";
 
 const Homepage = () => {
     const { modalVisible } = useProductsContext();
