@@ -1,28 +1,29 @@
-import { useNavigate } from "react-router-dom";
-import styles from "./style.module.scss";
 import DefaultPageAdmin from "../../components/DefaultPageAdmin";
+import { useProductsContext } from "../../providers/productsContext";
+import AdminProductsSection from "../../components/sections/AdminProductsSection";
+import CreateNewProductModal from "../../components/AdminModals/CreateNewProductModal";
+import { AnimatePresence } from "framer-motion";
+import DeleteProductModal from "../../components/AdminModals/DeleteProductModal";
+import EditProductModal from "../../components/AdminModals/EditProductModal";
 
 const ProductsAdminPage = () => {
-    const navigate = useNavigate();
+    const { addModalVisible, deleteModal, editModalVisible } = useProductsContext();
 
     return (
-        <DefaultPageAdmin>
-            <section className={styles.sectionStyle}>
-                <nav className={styles.navi}>
-                    <h2 className="menu" onClick={() => navigate("/admin")}>
-                        INÍCIO
-                    </h2>
-                    <h2
-                        className="menu"
-                        onClick={() => navigate("")}
-                    >
-                        PRODUTOS
-                    </h2>
-                </nav>
-                <h1 className="title l">PAINEL DO ADMINISTRADOR</h1>
-                <p className="paragraph">Seja bem vindo, administrador!</p>
-            </section>
-        </DefaultPageAdmin>
+        <>
+            <DefaultPageAdmin>
+                <AdminProductsSection />
+            </DefaultPageAdmin>
+            <AnimatePresence
+                initial={false}
+                mode="wait"
+                onExitComplete={() => null}
+            >
+                { editModalVisible && <EditProductModal /> }
+                { deleteModal && <DeleteProductModal /> }
+                { addModalVisible && <CreateNewProductModal />}
+            </AnimatePresence>
+        </>
     );
 };
 

@@ -1,9 +1,8 @@
-import { createContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../services/api";
-import { toast } from "react-toastify";
 import { ToastError, ToastSuccess } from "../components/Toasts";
-export const UserContext = createContext({});
+const UserContext = createContext({});
 
 export const UserProvider = ({ children }) => {
     const [user, setUser] = useState(null);
@@ -30,7 +29,6 @@ export const UserProvider = ({ children }) => {
             const { data } = await api.post("/login", formData);
             localStorage.setItem("@TOKEN", data.accessToken);
             setUser(data.user);
-            ToastSuccess("Logado com sucesso");
             navigate("/admin");
         } catch (error) {
             if (
@@ -48,3 +46,5 @@ export const UserProvider = ({ children }) => {
         </UserContext.Provider>
     );
 };
+
+export const useUserContext = () => useContext(UserContext)

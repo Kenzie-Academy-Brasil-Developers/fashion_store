@@ -1,26 +1,20 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "./style.module.scss";
 import DefaultPageAdmin from "../../components/DefaultPageAdmin";
+import { useUserContext } from "../../providers/userContext";
+import AdminNavButtons from "../../components/AdminNavButtons";
 
 const AdminPage = () => {
-    const navigate = useNavigate();
+    const { user } = useUserContext()
+
+    console.log(user);
 
     return (
         <DefaultPageAdmin>
             <section className={styles.sectionStyle}>
-                <nav className={styles.navi}>
-                    <h2 className="menu" onClick={() => navigate("/admin")}>
-                        INÍCIO
-                    </h2>
-                    <h2
-                        className="menu"
-                        onClick={() => navigate("")}
-                    >
-                        PRODUTOS
-                    </h2>
-                </nav>
+                <AdminNavButtons />
                 <h1 className="title l">PAINEL DO ADMINISTRADOR</h1>
-                <p className="paragraph">Seja bem vindo, administrador!</p>
+                <p className="paragraph">Seja bem vindo, {user.name}!</p>
             </section>
         </DefaultPageAdmin>
     );

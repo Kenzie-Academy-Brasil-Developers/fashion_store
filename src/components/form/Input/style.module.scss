@@ -10,3 +10,20 @@
     }
 
 }
+
+.textAreaBox {
+    textarea {
+        box-sizing: border-box;
+        resize: none;
+        width: 100%;
+        padding: 1.31rem 1.63rem 0;
+        border: none;
+        background-color: var(--color-grey);
+        outline: none;
+    }
+    
+    p{
+        padding: 10px 0;
+        color: red;
+    }
+}

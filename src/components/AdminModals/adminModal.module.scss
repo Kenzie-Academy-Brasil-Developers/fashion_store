@@ -1,0 +1,77 @@
+.backdrop {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    inset: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(217, 217, 217, 0.40);
+    overflow: hidden;
+
+    .modalContainer {
+        max-width: 44rem;
+        width: clamp(50%, 44rem, 90%);
+        background-color: var(--color-white);
+        padding: 1.5rem 1.44rem 3.56rem 1.75rem;
+    }
+
+    .modalHeader {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 4rem;
+        position: relative;
+        margin-bottom: 2rem;
+
+        @media(max-width: 360px) {
+            h2 {
+                font-size: 1.5rem !important;
+            }    
+
+        }
+
+        >button {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 6px;
+
+            span {
+                font-size: 3rem !important;
+            }
+        }
+    }
+
+    .deleteModalContainer {
+        max-width: 30rem;
+        width: clamp(50%, 30rem, 90%);
+        background-color: var(--color-white);
+        padding: 1.5rem 1.44rem 2.75rem 1.75rem;
+
+
+        .confirmDelete {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3rem;
+
+            span {
+                color: red !important;
+            }
+
+            button {
+                width: 100% !important;
+                
+                &:hover {
+                    border-color: red !important;
+                    color: red !important;
+                }
+
+            }
+
+        }
+
+    }
+
+}

@@ -1,8 +1,12 @@
-.header {
+.adminHeader {
     width: 100%;
     padding-top: 2.19rem;
-    margin-bottom: 4rem;
+    margin-bottom: clamp(2rem, 10vw, 4rem);
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.adminMain {
+    min-height: 44rem;
 }
