@@ -1,42 +1,30 @@
-import { useNavigate } from "react-router-dom";
 import styles from "./style.module.scss";
-// <<<<<<< HEAD
-import { useContext } from "react";
-import { useProductsContext } from "../../providers/productsContext";
-import AdminProducts from "../../components/AdminProducts/index.jsx";
-// =======
 import DefaultPageAdmin from "../../components/DefaultPageAdmin";
-// >>>>>>> 78818fb2a10300c8f15831903538623a5ff8441a
+import { useUserContext } from "../../providers/userContext";
+import AdminNavButtons from "../../components/AdminNavButtons";
+import { BiLogOut } from "react-icons/bi";
 
 const AdminPage = () => {
-  const navigate = useNavigate();
+    const { user, userLogout } = useUserContext();
 
-
-  const { products } = useProductsContext()
-  // console.log(products)
-
-  return (
-    <DefaultPageAdmin>
-      <section className={styles.sectionStyle}>
-        <nav className={styles.navi}>
-          <h2 className="menu" onClick={() => navigate("/admin")} >
-            INÍCIO
-          </h2>
-          <h2 className="menu" onClick={() => navigate("/products")}>
-            PRODUTOS
-          </h2>
-        </nav>
-        <div>
-          <h1 className="title l">PAINEL DO ADMINISTRADOR</h1>
-          <p className="paragraph">Seja bem vindo, administrador!</p>
-        </div>
-
-
-      </section>
-
-
-    </DefaultPageAdmin>
-  );
+    return (
+        <DefaultPageAdmin>
+            <section className={styles.sectionStyle}>
+                <AdminNavButtons />
+                <div className={styles.logoutDiv}>
+                    <h1 className="title l">PAINEL DO ADMINISTRADOR</h1>
+                    <button
+                        className="btn outline price l"
+                        onClick={() => userLogout()}
+                    >
+                        SAIR
+                        <BiLogOut size={30} />
+                    </button>
+                </div>
+                <p className="paragraph">Seja bem vindo, {user.name}!</p>
+            </section>
+        </DefaultPageAdmin>
+    );
 };
 
 export default AdminPage;

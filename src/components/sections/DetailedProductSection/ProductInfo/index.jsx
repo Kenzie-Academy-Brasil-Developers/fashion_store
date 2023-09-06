@@ -6,7 +6,7 @@ const ProductInfoCard = ({ product }) => {
         minimumFractionDigits: 2,
     });
 
-    return(
+    return (
         <>
             <div className={style.imageContainer}>
                 <img src={product.image} />
@@ -15,12 +15,15 @@ const ProductInfoCard = ({ product }) => {
                 <h3 className="title selected">{product.name}</h3>
                 <span className="price l">R$ {price}</span>
                 <p className="paragraph">{product.description}</p>
-                <AddToCartButton product={product} btnClass={"addToCartButton l breadcrumbs"} >
+                <AddToCartButton
+                    product={product}
+                    btnClass={"addToCartButton l breadcrumbs"}
+                >
                     ADICIONAR AO CARRINHO
                 </AddToCartButton>
             </div>
         </>
-    )
-}
+    );
+};
 
-export default ProductInfoCard
+export default ProductInfoCard;

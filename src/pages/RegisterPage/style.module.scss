@@ -1,7 +1,7 @@
 .containerBox {
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 3.75rem;
 
     img {
         width: clamp(15.625rem, 100%, 51.25rem);
@@ -45,7 +45,7 @@
         flex-direction: row;
 
         img {
-            width: 50%;
+            width: 52%;
         }
     }
 }

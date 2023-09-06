@@ -1,172 +1,99 @@
 import { createContext, useContext, useState, useEffect } from "react";
-import api from "../services/api.js"
-import { useOutclick } from "../hooks/useOutclick.js";
-import { useKeydown } from "../hooks/useKeydown.js";
-import { useForm } from "react-hook-form";
+import api from "../services/api.js";
 import { toast } from "react-toastify";
+import { ToastSuccess } from "../components/Toasts/index.jsx";
 
-const ProductsContext = createContext({})
+const ProductsContext = createContext({});
 
 const ProductsProvider = ({ children }) => {
-    const [products, setProducts] = useState([])
-    const [selectedProduct, setSelectedProduct] = useState({})
-    const [filteredProducts, setFilteredProducts] = useState([])
+    const [products, setProducts] = useState([]);
+    const [selectedProduct, setSelectedProduct] = useState({});
+    const [filteredProducts, setFilteredProducts] = useState([]);
     const [productsListToCard, setProductsListToCard] = useState([]);
     const [modalVisible, setModalVisible] = useState(false);
-
-
-    // Painel Adm
-    const [isOpen, setIsOpen] = useState(false)
-    
-    const [isOpenFIll, setIsOpenFill] = useState(false)
-
-    const [modalFillObjc, setmodalFillObjc] = useState([])
-
-    const [productId, setproductId] = useState([])
-
-    function toastSuccess( message, time) {
-        toast.success(message, {
-            position: "top-right",
-            autoClose: time,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-            style: {
-                background: '#343B41',
-                color: '#F8F9FA'
-            }
-        });
-    }
-
-
-    const modalRef = useOutclick(()=>{
-        setIsOpen(false)
-        setIsOpenFill(false)
-    })
-
-    const buttonRef= useKeydown('Escape',(element) =>{
-        element.click()
-    })
+    const [addModalVisible, setAddModalVisible] = useState(false);
+    const [editModalVisible, setEditModalVisible] = useState(false);
+    const [deleteModal, setDeleteModal] = useState(false);
+    const [productId, setProductId] = useState(null);
 
     const productsList = async () => {
-        try { 
-            const { data }  = await api.get("/products")
-            setProducts(data)
+        try {
+            const { data } = await api.get("/products");
+            setProducts(data);
         } catch (error) {
-            console.log(error);            
+            console.log(error);
         }
-    }
+    };
 
     useEffect(() => {
-        productsList()
-    }, [])
+        productsList();
+    }, []);
 
-    const delPost = async (productId) => {
-        const token = localStorage.getItem('@TOKEN')
+    const addProduct = async (formData, setIsLoading) => {
         try {
-            const { data } = await api.delete(`/products/${productId}`, {
+            setIsLoading(true);
+            const token = localStorage.getItem("@TOKEN");
+            const { data } = await api.post("/products", formData, {
                 headers: {
-                    'Authorization': `Bearer ${token}`,
-                }
+                    Authorization: `Bearer ${token}`,
+                },
             });
-            productsList()
-            toastSuccess('Publicação deletada com sucesso !',2000)
+            setAddModalVisible(false);
+            setProducts([...products, data]);
+            ToastSuccess("Produto adicionado");
         } catch (error) {
-            console.log(error)
+            console.log(error);
+        } finally {
+            setIsLoading(false);
         }
-    }
+    };
 
-    const editProduct = (productId) => {
-        setIsOpenFill(true)
-        const newProducts = products.filter(product => product.id == productId)
-        setmodalFillObjc(newProducts)
-        setproductId(productId)
-    }
-
-    const delProduct = (productId) => {
-        delPost(productId)
-    }
-
-
-    const { register, handleSubmit } = useForm()
-
-
-    const createProduct = async (formData) => {
-        const token = localStorage.getItem('@TOKEN')
+    const deleteProduct = async (deletingId) => {
         try {
-            const { data } = await api.post('/products', formData, {
+            const token = localStorage.getItem("@TOKEN");
+
+            await api.delete(`/products/${deletingId}`, {
                 headers: {
-                    'Authorization': `Bearer ${token}`,
-                }
+                    Authorization: `Bearer ${token}`,
+                },
             });
-            toastSuccess('Publicação criada com sucesso !',2000)
-            productsList()
-        } catch (error) {
-            console.log(error)
-        }
-    }
+            const newProductList = products.filter(
+                (product) => product.id !== deletingId
+            );
+            setProducts(newProductList);
+            setProductId(null);
+        } catch (error) {}
+    };
 
-    const submitCreate = (formData) => {
-        formData.price = Number(formData.price)
-        setIsOpen(false)
-        createProduct(formData)
-    }
-
-
-
-    const atualizarPublic = async (formData) => {
-        const token = localStorage.getItem('@TOKEN')
+    const editProduct = async (formData) => {
         try {
+            const token = localStorage.getItem("@TOKEN");
             const { data } = await api.put(`/products/${productId}`, formData, {
                 headers: {
-                    'Authorization': `Bearer ${token}`,
-                }
+                    Authorization: `Bearer ${token}`,
+                },
             });
+            const productIndex = products.findIndex((x) => x.id === productId);
 
-            productsList()
-            toastSuccess('Publicação editada !',2000)
-        } catch (error) {
-            console.log(error)
-        }
-    }
+            const updatedProductsList = [...products];
+            updatedProductsList[productIndex] = data;
 
-
-    const submitFill = (formData) => {
-        formData.price = Number(formData.price)
-
-        setmodalFillObjc(formData)
-        if (formData.name == "") {
-            formData.name = modalFillObjc[0].name
-        }
-        if (formData.price == "") {
-            formData.price = modalFillObjc[0].price
-        }
-        if (formData.image == "") {
-            formData.image = modalFillObjc[0].image
-        }
-        if (formData.description == "") {
-            formData.description = modalFillObjc[0].description
-        }
-
-        atualizarPublic(formData)
-        setIsOpenFill(false)
-    }
-
-    // /////////////////////////////////////////////////////
+            setProductId(null);
+            setProducts(updatedProductsList);
+            setEditModalVisible(false);
+        } catch (error) {}
+    };
 
     const handleSelectedProduct = (id) => {
-        window.scrollTo(0, 0)
-        const selectedItem = products.find(item => item.id === Number(id))
-        const filtered = products.filter(item => item.id !== Number(id))
-        
-        setSelectedProduct(selectedItem)
-        setFilteredProducts(filtered)
-    }
+        window.scrollTo(0, 0);
+        const selectedItem = products.find((item) => item.id === Number(id));
+        const filtered = products.filter((item) => item.id !== Number(id));
 
-    return(
+        setSelectedProduct(selectedItem);
+        setFilteredProducts(filtered);
+    };
+
+    return (
         <ProductsContext.Provider
             value={{
                 products,
@@ -177,30 +104,24 @@ const ProductsProvider = ({ children }) => {
                 setProductsListToCard,
                 setModalVisible,
                 modalVisible,
-                setIsOpen,
-                isOpen,
-                isOpenFIll,
-                setIsOpenFill,
-                modalRef,
-                buttonRef,
-                productsList,
-                modalFillObjc,
-                setmodalFillObjc,
-                productId,
-                setproductId,
+                addProduct,
+                deleteProduct,
                 editProduct,
-                delProduct,
-                handleSubmit,
-                submitCreate,
-                register,
-                submitFill
+                addModalVisible,
+                setAddModalVisible,
+                editModalVisible,
+                setEditModalVisible,
+                deleteModal,
+                setDeleteModal,
+                setProductId,
+                productId,
             }}
         >
             {children}
         </ProductsContext.Provider>
-    )
-}
+    );
+};
 
-export default ProductsProvider
+export default ProductsProvider;
 
-export const useProductsContext = () => useContext(ProductsContext)
+export const useProductsContext = () => useContext(ProductsContext);
