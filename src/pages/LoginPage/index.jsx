@@ -3,16 +3,14 @@ import banner from "../../assets/banner.png";
 import style from "./style.module.scss";
 import { Input } from "../../components/form/Input";
 import { InputPassword } from "../../components/form/InputPassword";
-import { useContext } from "react";
-import { UserContext } from "../../providers/userContext";
+import { useUserContext } from "../../providers/userContext";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
 
 const LoginPage = () => {
     const navigate = useNavigate();
     const { register, handleSubmit } = useForm();
-    const { userLogin } = useContext(UserContext);
+    const { userLogin } = useUserContext();
 
     const submit = (formData) => {
         userLogin(formData);
@@ -30,11 +28,13 @@ const LoginPage = () => {
                         <div>
                             <form onSubmit={handleSubmit(submit)}>
                                 <Input
+                                    autoComplete={"current-email"}
                                     type="email"
                                     placeholder="E-MAIL"
                                     {...register("email")}
                                 />
                                 <InputPassword
+                                    autoComplete={"current-password"}
                                     placeholder="SENHA"
                                     {...register("password")}
                                 />
@@ -54,7 +54,6 @@ const LoginPage = () => {
                                     </button>
                                 </div>
                             </form>
-                            <ToastContainer />
                         </div>
                     </section>
                 </section>

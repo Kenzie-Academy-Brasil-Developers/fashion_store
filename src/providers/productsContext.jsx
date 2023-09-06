@@ -1,6 +1,7 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import api from "../services/api.js";
 import { toast } from "react-toastify";
+import { ToastSuccess } from "../components/Toasts/index.jsx";
 
 const ProductsContext = createContext({});
 
@@ -12,7 +13,8 @@ const ProductsProvider = ({ children }) => {
     const [modalVisible, setModalVisible] = useState(false);
     const [addModalVisible, setAddModalVisible] = useState(false);
     const [editModalVisible, setEditModalVisible] = useState(false);
-    const [editingProduct, setEditingProduct] = useState(null);
+    const [deleteModal, setDeleteModal] = useState(false);
+    const [productId, setProductId] = useState(null);
 
     const productsList = async () => {
         try {
@@ -27,8 +29,9 @@ const ProductsProvider = ({ children }) => {
         productsList();
     }, []);
 
-    const addProduct = async (formData) => {
+    const addProduct = async (formData, setIsLoading) => {
         try {
+            setIsLoading(true);
             const token = localStorage.getItem("@TOKEN");
             const { data } = await api.post("/products", formData, {
                 headers: {
@@ -37,10 +40,11 @@ const ProductsProvider = ({ children }) => {
             });
             setAddModalVisible(false);
             setProducts([...products, data]);
-
-            toast.success("Produto adicionado");
+            ToastSuccess("Produto adicionado");
         } catch (error) {
             console.log(error);
+        } finally {
+            setIsLoading(false);
         }
     };
 
@@ -57,36 +61,25 @@ const ProductsProvider = ({ children }) => {
                 (product) => product.id !== deletingId
             );
             setProducts(newProductList);
+            setProductId(null);
         } catch (error) {}
     };
 
     const editProduct = async (formData) => {
-        const newProduct = {
-            name: formData.name,
-            price: formData.price,
-            description: formData.description,
-            image: formData.image,
-        };
         try {
             const token = localStorage.getItem("@TOKEN");
-            const { data } = await api.put(
-                `/products/${editingProduct.id}`,
-                newProduct,
-                {
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                    },
-                }
-            );
-            const newProductList = products.map((product) => {
-                if (product.id === editingProduct.id) {
-                    return data;
-                } else {
-                    return product;
-                }
+            const { data } = await api.put(`/products/${productId}`, formData, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
             });
-            setProducts(newProductList);
-            setEditingProduct(null);
+            const productIndex = products.findIndex((x) => x.id === productId);
+
+            const updatedProductsList = [...products];
+            updatedProductsList[productIndex] = data;
+
+            setProductId(null);
+            setProducts(updatedProductsList);
             setEditModalVisible(false);
         } catch (error) {}
     };
@@ -118,8 +111,10 @@ const ProductsProvider = ({ children }) => {
                 setAddModalVisible,
                 editModalVisible,
                 setEditModalVisible,
-                editingProduct,
-                setEditingProduct,
+                deleteModal,
+                setDeleteModal,
+                setProductId,
+                productId,
             }}
         >
             {children}

@@ -14,7 +14,7 @@ const ProductCard = ({ product, id }) => {
         <>
             <li className={style.productCard}>
                 <div className={style.productInfos}>
-                    <Link to={`/${product.name}/${id}`}>
+                    <Link to={`/${product.name}/${id}`}>    
                         <img
                             src={product.image}
                             onClick={() => handleSelectedProduct(id)}

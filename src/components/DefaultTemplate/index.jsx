@@ -1,7 +1,7 @@
 import { Footer } from "../Footer";
 import { Header } from "../Header";
 
-export const DefaultTemplate = ({ children }) => {
+const DefaultTemplate = ({ children }) => {
     return (
         <>
             <Header />
@@ -12,3 +12,5 @@ export const DefaultTemplate = ({ children }) => {
         </>
     );
 };
+
+export default DefaultTemplate

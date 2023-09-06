@@ -1,15 +1,16 @@
 import "./styles/index.scss";
 import RoutesMain from "./routes/routesMain";
-import { useContext } from "react";
-import { UserContext } from "./providers/userContext";
+import { ToastContainer } from "react-toastify";
 import { Loading } from "./components/Loading";
+import { useUserContext } from "./providers/userContext";
 
 const App = () => {
-    const { loading } = useContext(UserContext);
+    const { loading } = useUserContext();
+
     return (
         <>
-        {loading ? <Loading/> : <RoutesMain /> }
-            
+            <ToastContainer />
+            {loading ? <Loading /> : <RoutesMain />}
         </>
     );
 };
