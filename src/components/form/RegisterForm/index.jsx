@@ -3,10 +3,9 @@ import { Input } from "../Input";
 import { InputPassword } from "../InputPassword";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { registerFormSchema } from "./registerFormSchema";
-
-import { useContext, useState } from "react";
-import { UserContext } from "../../../providers/userContext";
+import { useState } from "react";
 import styles from "./style.module.scss";
+import { useUserContext } from "../../../providers/userContext";
 
 export const RegisterForm = () => {
     const {
@@ -19,7 +18,7 @@ export const RegisterForm = () => {
     });
     const [loading, setLoading] = useState(false);
 
-    const { userRegister } = useContext(UserContext);
+    const { userRegister } = useUserContext();
 
     const submit = (formData) => {
         userRegister(formData, setLoading);
@@ -27,6 +26,7 @@ export const RegisterForm = () => {
     return (
         <form className={styles.flexBox} onSubmit={handleSubmit(submit)}>
             <Input
+                autoComplete="username"
                 disabled={loading}
                 type="text"
                 {...register("name")}
@@ -35,6 +35,7 @@ export const RegisterForm = () => {
             />
 
             <Input
+                autoComplete={"new-email"}
                 disabled={loading}
                 type="text"
                 {...register("email")}
@@ -42,12 +43,14 @@ export const RegisterForm = () => {
                 placeholder="E-MAIL"
             />
             <InputPassword
+                autoComplete={"new-password"}
                 disabled={loading}
                 {...register("password")}
                 error={errors.password}
                 placeholder="SENHA"
             />
             <InputPassword
+                autoComplete={"new-password"}
                 disabled={loading}
                 {...register("confirmPassword")}
                 error={errors.confirmPassword}

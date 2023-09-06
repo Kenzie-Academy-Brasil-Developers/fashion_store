@@ -5,6 +5,7 @@ import DetailedProductSection from "../../components/sections/DetailedProductSec
 import { useProductsContext } from "../../providers/productsContext";
 import { DefaultTemplate } from "../../components/DefaultTemplate";
 import CartModal from "../../components/CartModal";
+import { AnimatePresence } from "framer-motion";
 
 const DetailedProduct = () => {
     const {
@@ -14,6 +15,7 @@ const DetailedProduct = () => {
         products,
         modalVisible,
     } = useProductsContext();
+    
     const { productId } = useParams();
 
     useEffect(() => {
@@ -23,12 +25,20 @@ const DetailedProduct = () => {
     }, [products]);
 
     return (
-        <DefaultTemplate>
-            <DetailedProductSection selectedProduct={selectedProduct}>
-                <ProductList  productsResultFinal={filteredProducts} />
-            </DetailedProductSection>
-            {modalVisible ? <CartModal /> : null}
-        </DefaultTemplate>
+        <>
+            <DefaultTemplate>
+                <DetailedProductSection selectedProduct={selectedProduct}>
+                    <ProductList  products={filteredProducts} />
+                </DetailedProductSection>
+            </DefaultTemplate>
+            <AnimatePresence
+                initial={false}
+                mode="wait"
+                onExitComplete={() => null}
+            >
+                { modalVisible && <CartModal />}
+            </AnimatePresence>
+        </>
     );
 };
 
