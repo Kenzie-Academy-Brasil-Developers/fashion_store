@@ -1,0 +1,13 @@
+.sectionStyle {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin-top: 50px;
+    padding: 0;
+    padding-bottom: 470px;
+
+    .navi {
+        display: flex;
+        gap: 50px;
+    }
+}
