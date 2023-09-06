@@ -12,9 +12,11 @@ export const Header = () => {
                 <Link to={"/"} className="title m">
                     FASHIONSTORE
                 </Link>
-                <button onClick={() => setModalVisible(true)}>
-                    <img src={cartIcon} alt="Shopping cart button" />
-                </button>
+                <div>
+                    <button onClick={() => setModalVisible(true)}>
+                        <img src={cartIcon} alt="Shopping cart button" />
+                    </button>
+                </div>
             </div>
         </header>
     );

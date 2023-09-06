@@ -25,7 +25,7 @@ const CartModal = () => {
             x: "0",
             transition: {
                 duration: 0.15,
-                ease: "linear"
+                ease: "linear",
             },
         },
         exit: {
@@ -49,7 +49,10 @@ const CartModal = () => {
                 <div>
                     <div className={style.modalHeader}>
                         <span className="title m">CARRINHO</span>
-                        <button autoFocus={true} onClick={() => setModalVisible(false)}>
+                        <button
+                            autoFocus={true}
+                            onClick={() => setModalVisible(false)}
+                        >
                             <span className="material-symbols-outlined">
                                 close
                             </span>

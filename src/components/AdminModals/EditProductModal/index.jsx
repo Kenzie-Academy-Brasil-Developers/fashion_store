@@ -5,12 +5,13 @@ import { AdminModalForm } from "../../form/AdminModalForm";
 import Backdrop from "../../Backdrop";
 
 const EditProductModal = () => {
-    const { editProduct, setEditModalVisible, setProductId } = useProductsContext();
+    const { editProduct, setEditModalVisible, setProductId } =
+        useProductsContext();
 
     const closeModal = () => {
-        setProductId(null)
-        setEditModalVisible(false)
-    }
+        setProductId(null);
+        setEditModalVisible(false);
+    };
 
     const dropIn = {
         hidden: {
@@ -23,18 +24,18 @@ const EditProductModal = () => {
             transition: {
                 type: "tween",
                 duration: 0.25,
-            }
+            },
         },
         exit: {
             y: "-10vh",
             opacity: 0,
-        }
-    }
+        },
+    };
 
     return (
         <>
             <Backdrop onClick={setEditModalVisible} classname={style.backdrop}>
-                <motion.div 
+                <motion.div
                     onClick={(e) => e.stopPropagation()}
                     className={style.modalContainer}
                     variants={dropIn}
@@ -44,16 +45,16 @@ const EditProductModal = () => {
                 >
                     <div className={style.modalHeader}>
                         <h2 className="title m">EDITAR PRODUTO</h2>
-                        <button
-                            autoFocus={true}
-                            onClick={() => closeModal()}
-                        >
+                        <button autoFocus={true} onClick={() => closeModal()}>
                             <span className="material-symbols-outlined">
                                 close
                             </span>
                         </button>
                     </div>
-                    <AdminModalForm buttonText={"EDITAR PRODUTO"} submitFunction={editProduct}/>
+                    <AdminModalForm
+                        buttonText={"EDITAR PRODUTO"}
+                        submitFunction={editProduct}
+                    />
                 </motion.div>
             </Backdrop>
         </>

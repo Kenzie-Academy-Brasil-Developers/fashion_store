@@ -1,24 +1,24 @@
-import { motion } from "framer-motion"
-import { useProductsContext } from "../../providers/productsContext"
+import { motion } from "framer-motion";
+import { useProductsContext } from "../../providers/productsContext";
 
 const Backdrop = ({ children, onClick, classname }) => {
-    const { setProductId } = useProductsContext()
+    const { setProductId } = useProductsContext();
 
     const closeModal = (e) => {
-        if(e.key === "Escape") {
-            setProductId(null)
-            onClick(false)
+        if (e.key === "Escape") {
+            setProductId(null);
+            onClick(false);
         }
-    }
+    };
 
     const closeOnClick = () => {
-        onClick(false)
-        setProductId(null)
-    }
+        onClick(false);
+        setProductId(null);
+    };
 
-    return(
+    return (
         <>
-            <motion.div 
+            <motion.div
                 onClick={() => closeOnClick()}
                 onKeyDown={closeModal}
                 className={classname}
@@ -29,7 +29,7 @@ const Backdrop = ({ children, onClick, classname }) => {
                 {children}
             </motion.div>
         </>
-    )
-}
+    );
+};
 
-export default Backdrop
+export default Backdrop;

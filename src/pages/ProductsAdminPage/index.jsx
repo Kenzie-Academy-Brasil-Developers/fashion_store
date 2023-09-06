@@ -7,7 +7,8 @@ import DeleteProductModal from "../../components/AdminModals/DeleteProductModal"
 import EditProductModal from "../../components/AdminModals/EditProductModal";
 
 const ProductsAdminPage = () => {
-    const { addModalVisible, deleteModal, editModalVisible } = useProductsContext();
+    const { addModalVisible, deleteModal, editModalVisible } =
+        useProductsContext();
 
     return (
         <>
@@ -19,9 +20,9 @@ const ProductsAdminPage = () => {
                 mode="wait"
                 onExitComplete={() => null}
             >
-                { editModalVisible && <EditProductModal /> }
-                { deleteModal && <DeleteProductModal /> }
-                { addModalVisible && <CreateNewProductModal />}
+                {editModalVisible && <EditProductModal />}
+                {deleteModal && <DeleteProductModal />}
+                {addModalVisible && <CreateNewProductModal />}
             </AnimatePresence>
         </>
     );

@@ -1,5 +1,6 @@
 import { Footer } from "../Footer";
 import style from "./style.module.scss";
+import { useUserContext } from "../../providers/userContext";
 
 const DefaultPageAdmin = ({ children }) => {
     return (
@@ -9,7 +10,7 @@ const DefaultPageAdmin = ({ children }) => {
                     <span className="title m">FASHIONSTORE</span>
                 </div>
             </header>
-            <main className={style.adminMain} >
+            <main className={style.adminMain}>
                 <div className={`container`}>{children}</div>
             </main>
             <Footer />

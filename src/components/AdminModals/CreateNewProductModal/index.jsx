@@ -18,18 +18,18 @@ const CreateNewProductModal = () => {
             transition: {
                 type: "tween",
                 duration: 0.25,
-            }
+            },
         },
         exit: {
             y: "-10vh",
             opacity: 0,
-        }
-    }
+        },
+    };
 
     return (
         <>
             <Backdrop onClick={setAddModalVisible} classname={style.backdrop}>
-                <motion.div 
+                <motion.div
                     onClick={(e) => e.stopPropagation()}
                     className={style.modalContainer}
                     variants={dropIn}
@@ -48,7 +48,10 @@ const CreateNewProductModal = () => {
                             </span>
                         </button>
                     </div>
-                    <AdminModalForm buttonText={"NOVO PRODUTO"} submitFunction={addProduct}/>
+                    <AdminModalForm
+                        buttonText={"NOVO PRODUTO"}
+                        submitFunction={addProduct}
+                    />
                 </motion.div>
             </Backdrop>
         </>

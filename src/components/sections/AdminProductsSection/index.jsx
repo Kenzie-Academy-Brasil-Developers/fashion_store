@@ -1,27 +1,27 @@
 import styles from "./style.module.scss";
-import { RxPlusCircled } from "react-icons/rx"
+import { RxPlusCircled } from "react-icons/rx";
 import AdminNavButtons from "../../AdminNavButtons";
 import { useProductsContext } from "../../../providers/productsContext";
 import AdminProductList from "./AdminProductList";
 import { motion } from "framer-motion";
 
 const AdminProductsSection = () => {
-    const { products, setAddModalVisible } = useProductsContext()
+    const { products, setAddModalVisible } = useProductsContext();
 
     return (
         <section className={styles.productsAdminSection}>
             <AdminNavButtons />
             <div className={styles.addProduct}>
                 <h1 className="title l">PRODUTOS</h1>
-                <motion.button 
-                    whileTap={{scale: 0.97}}
+                <motion.button
+                    whileTap={{ scale: 0.97 }}
                     transition={{
-                        type: "tween"
+                        type: "tween",
                     }}
-                    className="button black breadcrumbs" 
+                    className="button black breadcrumbs"
                     onClick={() => setAddModalVisible(true)}
                 >
-                    <RxPlusCircled size={30}/>
+                    <RxPlusCircled size={30} />
                     <span>NOVO PRODUTO</span>
                 </motion.button>
             </div>

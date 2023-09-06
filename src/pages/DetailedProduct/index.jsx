@@ -15,7 +15,7 @@ const DetailedProduct = () => {
         products,
         modalVisible,
     } = useProductsContext();
-    
+
     const { productId } = useParams();
 
     useEffect(() => {
@@ -28,7 +28,7 @@ const DetailedProduct = () => {
         <>
             <DefaultTemplate>
                 <DetailedProductSection selectedProduct={selectedProduct}>
-                    <ProductList  products={filteredProducts} />
+                    <ProductList productsResultFinal={filteredProducts} />
                 </DetailedProductSection>
             </DefaultTemplate>
             <AnimatePresence
@@ -36,7 +36,7 @@ const DetailedProduct = () => {
                 mode="wait"
                 onExitComplete={() => null}
             >
-                { modalVisible && <CartModal />}
+                {modalVisible && <CartModal />}
             </AnimatePresence>
         </>
     );
