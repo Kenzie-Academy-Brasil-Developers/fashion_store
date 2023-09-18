@@ -6,13 +6,13 @@ import { BrowserRouter } from "react-router-dom";
 import { UserProvider } from "./providers/userContext.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <UserProvider>
-        <ProductsProvider>
-          <App />
-        </ProductsProvider>
-      </UserProvider>
-    </BrowserRouter>
-  </React.StrictMode>
+    <React.StrictMode>
+        <BrowserRouter>
+            <UserProvider>
+                <ProductsProvider>
+                    <App />
+                </ProductsProvider>
+            </UserProvider>
+        </BrowserRouter>
+    </React.StrictMode>
 );

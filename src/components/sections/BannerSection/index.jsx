@@ -1,8 +1,8 @@
-import bannerImg from "../../../assets/banner.png"
-import styles from "./style.module.scss"
-import { Link } from "react-scroll"
+import bannerImg from "../../../assets/banner.png";
+import styles from "./style.module.scss";
+import { Link } from "react-scroll";
 
-export const BannerSection = () =>{
+export const BannerSection = () => {
     return (
         <section className={styles.bannerStyle}>
             <div className={styles.bannerImg}>
@@ -26,4 +26,4 @@ export const BannerSection = () =>{
             </div>
         </section>
     );
-}
+};

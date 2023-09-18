@@ -1,0 +1,20 @@
+.flexBox {
+    display: flex;
+    flex-direction: column;
+    gap: 1.31rem;
+
+    @media(max-width: 680px) {
+        button {
+            width: auto !important;
+        }
+    }
+
+    button {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.94rem;
+        width: max-content;
+        padding: 0 2.31rem 0 2.13rem;
+        align-self: flex-end;
+    }
+}
